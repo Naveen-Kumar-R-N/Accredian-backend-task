@@ -4,6 +4,7 @@ const { PrismaClient } = require('@prisma/client');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const { body, validationResult } = require('express-validator');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const app = express();
 const prisma = new PrismaClient();
 
 app.use(express.json());
+app.use(cors());
 
 // Root route
 app.get('/', (req, res) => {
